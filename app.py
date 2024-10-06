@@ -13,6 +13,7 @@ from langchain.chains import create_retrieval_chain
 import google.generativeai as genai
 
 app = Flask(__name__)
+CORS(app, support_credentials=True)
 CORS(app)
 
 # Load environment variables
