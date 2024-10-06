@@ -13,7 +13,8 @@ from langchain.chains import create_retrieval_chain
 import google.generativeai as genai
 
 app = Flask(__name__)
-CORS(app, origins=['https://nasa-pace.netlify.app/'])
+CORS(app, resources={r"/*": {"origins": ["https://nasa-pace.netlify.app"]}})
+
 
 # Load environment variables
 load_dotenv()
