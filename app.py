@@ -13,7 +13,9 @@ from langchain.chains import create_retrieval_chain
 import google.generativeai as genai
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": ["https://nasa-pace.netlify.app"]}})
+
+CORS(app, resources={r"/*": {"origins": "https://nasa-pace.netlify.app"}}, methods=['GET', 'POST', 'OPTIONS'], allow_headers=['Content-Type'])
+
 
 
 # Load environment variables
@@ -68,6 +70,10 @@ def ask_question():
         return jsonify({"answer": answer})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+@app.route('/ask', methods=['OPTIONS'])
+def handle_options():
+    return '', 204
+    
 
 if __name__ == '__main__':
     app.run(debug=True)
