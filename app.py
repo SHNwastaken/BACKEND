@@ -14,7 +14,6 @@ import google.generativeai as genai
 
 app = Flask(__name__)
 CORS(app, support_credentials=True)
-CORS(app)
 
 # Load environment variables
 load_dotenv()
